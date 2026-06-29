@@ -14,7 +14,7 @@
 </head>
 <body class="bg-slate-50">
     <div class="flex min-h-screen">
-        @include('components.sidebar')
+@include('components.sidebaradmin')
         <div class="flex-1 lg:ml-72">
             <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
                 <div class="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
@@ -34,11 +34,23 @@
                         <h1 class="text-2xl font-bold text-slate-800"><i class="fas fa-chart-pie text-green-500 mr-2"></i>Rekap Absensi</h1>
                         <p class="text-slate-500 mt-1 text-sm">Ringkasan bulanan kehadiran seluruh staf & karyawan</p>
                     </div>
+                    <a href="{{ route('admin.rekap.export', ['bulan' => $bulan, 'tahun' => $tahun]) }}" class="px-5 py-2.5 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl text-sm font-medium hover:from-green-600 hover:to-emerald-700 transition-all shadow-lg shadow-green-500/20 flex items-center space-x-2">
+                        <i class="fas fa-file-excel"></i><span>Download Excel</span>
+                    </a>
                 </div>
 
-                <!-- Filter Bulan -->
+                <!-- Filter Bulan & Cari -->
                 <form method="GET" class="mb-6">
-                    <div class="flex items-end space-x-4">
+                    <div class="flex flex-wrap items-end gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Cari Karyawan</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                    <i class="fas fa-search text-slate-400"></i>
+                                </div>
+                                <input type="text" name="search" value="{{ request('search') }}" placeholder="NIP atau Nama..." class="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-400 focus:border-transparent outline-none transition-all">
+                            </div>
+                        </div>
                         <div>
                             <label class="block text-sm font-medium text-slate-700 mb-1">Bulan</label>
                             <select name="bulan" class="px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-400 outline-none">

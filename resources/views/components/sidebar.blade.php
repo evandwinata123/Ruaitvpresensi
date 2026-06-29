@@ -46,21 +46,24 @@
             <i class="fas fa-clock w-5 text-center"></i>
             <span>Lembur</span>
         </a>
-        <a href="{{ route('profile.index') }}" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium {{ request()->routeIs('profile.*') ? 'active' : 'text-slate-300' }}"
-            @if(request()->routeIs('profile.*'))
-                style="background: rgba(255, 255, 255, 0.15); border-right: 3px solid #667eea;"
-            @endif
-        >
-            <i class="fas fa-user-circle w-5 text-center {{ request()->routeIs('profile.*') ? 'text-indigo-300' : '' }}"></i>
-            <span>Profil Saya</span>
-        </a>
+
+        <div class="pt-3">
+            <a href="{{ route('profile.index') }}" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium {{ request()->routeIs('profile.*') ? 'active' : 'text-slate-300' }}"
+                @if(request()->routeIs('profile.*'))
+                    style="background: rgba(255, 255, 255, 0.15); border-right: 3px solid #667eea;"
+                @endif
+            >
+                <i class="fas fa-user-circle w-5 text-center {{ request()->routeIs('profile.*') ? 'text-indigo-300' : '' }}"></i>
+                <span>Profil Saya</span>
+            </a>
+        </div>
     </nav>
 
     <!-- Logout -->
     <div class="px-4 py-4 border-t border-white/10">
         <form action="{{ route('auth.logout') }}" method="POST">
             @csrf
-            <button type="submit" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-red-300 hover:text-red-200 hover:bg-red-500/10 w-full">
+            <button type="submit" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-red-300 hover:text-red-200 hover:bg-red-500/10 w-full transition-all">
                 <i class="fas fa-sign-out-alt w-5 text-center"></i>
                 <span>Keluar</span>
             </button>
@@ -112,15 +115,18 @@
             <i class="fas fa-clock w-5 text-center"></i>
             <span>Lembur</span>
         </a>
-        <a href="{{ route('profile.index') }}" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium {{ request()->routeIs('profile.*') ? 'active' : 'text-slate-300' }}">
-            <i class="fas fa-user-circle w-5 text-center {{ request()->routeIs('profile.*') ? 'text-indigo-300' : '' }}"></i>
-            <span>Profil Saya</span>
-        </a>
+
+        <div class="pt-3">
+            <a href="{{ route('profile.index') }}" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium {{ request()->routeIs('profile.*') ? 'active' : 'text-slate-300' }}">
+                <i class="fas fa-user-circle w-5 text-center {{ request()->routeIs('profile.*') ? 'text-indigo-300' : '' }}"></i>
+                <span>Profil Saya</span>
+            </a>
+        </div>
     </nav>
     <div class="px-4 py-4 border-t border-white/10">
         <form action="{{ route('auth.logout') }}" method="POST">
             @csrf
-            <button type="submit" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-red-300 hover:text-red-200 hover:bg-red-500/10 w-full">
+            <button type="submit" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-red-300 hover:text-red-200 hover:bg-red-500/10 w-full transition-all">
                 <i class="fas fa-sign-out-alt w-5 text-center"></i>
                 <span>Keluar</span>
             </button>

@@ -14,7 +14,7 @@
 </head>
 <body class="bg-slate-50">
     <div class="flex min-h-screen">
-        @include('components.sidebar')
+@include('components.sidebaradmin')
         <div class="flex-1 lg:ml-72">
             <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
                 <div class="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
@@ -93,12 +93,9 @@
                                                     <i class="fas fa-check mr-1"></i>Setujui
                                                 </button>
                                             </form>
-                                            <form action="{{ route('admin.review.reject', $att->id) }}" method="POST" onsubmit="return confirm('Tolak presensi ini?')">
-                                                @csrf
-                                                <button type="submit" class="px-3 py-1.5 bg-red-500 text-white rounded-lg text-xs font-medium hover:bg-red-600 transition-all" title="Tolak">
-                                                    <i class="fas fa-times mr-1"></i>Tolak
-                                                </button>
-                                            </form>
+                                            <button type="button" onclick="openRejectModal({{ $att->id }}, '{{ $att->user->name }}')" class="px-3 py-1.5 bg-red-500 text-white rounded-lg text-xs font-medium hover:bg-red-600 transition-all" title="Tolak">
+                                                <i class="fas fa-times mr-1"></i>Tolak
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
@@ -117,12 +114,76 @@
             </main>
         </div>
     </div>
+
+    <!-- Modal Tolak Presensi -->
+    <div id="rejectModal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-center justify-center" onclick="closeRejectModal(event)">
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-100 w-full max-w-md mx-4 overflow-hidden" onclick="event.stopPropagation()">
+            <div class="bg-gradient-to-r from-red-500 to-rose-600 px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-white font-bold flex items-center space-x-2">
+                        <i class="fas fa-times-circle"></i>
+                        <span>Tolak Presensi</span>
+                    </h3>
+                    <button type="button" onclick="closeRejectModal()" class="text-white/80 hover:text-white p-1">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            <form id="rejectForm" method="POST">
+                @csrf
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center space-x-3 p-3 bg-red-50 rounded-xl">
+                        <i class="fas fa-user text-red-400"></i>
+                        <div>
+                            <p class="text-sm font-medium text-slate-700">Karyawan</p>
+                            <p class="text-sm font-bold text-slate-800" id="rejectEmployeeName">-</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1.5">
+                            <i class="fas fa-comment text-red-400 mr-1"></i>Keterangan / Alasan Penolakan
+                        </label>
+                        <textarea name="keterangan" rows="3" required
+                            placeholder="Masukkan alasan mengapa presensi ditolak..."
+                            class="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-red-400 focus:border-transparent outline-none transition-all resize-none"></textarea>
+                        <p class="text-xs text-slate-400 mt-1">Keterangan ini akan terlihat oleh karyawan</p>
+                    </div>
+
+                    <div class="flex items-center justify-end space-x-3 pt-3 border-t border-slate-100">
+                        <button type="button" onclick="closeRejectModal()" class="px-5 py-2.5 border border-slate-200 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
+                            Batal
+                        </button>
+                        <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-red-500 to-rose-600 text-white rounded-xl text-sm font-medium hover:from-red-600 hover:to-rose-700 transition-all shadow-lg shadow-red-500/20">
+                            <i class="fas fa-times mr-1"></i>Tolak Presensi
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         function toggleMobileMenu() {
             const s=document.getElementById('mobileSidebar'),o=document.getElementById('mobileOverlay');
             s.classList.contains('-translate-x-full')?(s.classList.remove('-translate-x-full'),o.classList.remove('hidden'),document.body.style.overflow='hidden'):(s.classList.add('-translate-x-full'),o.classList.add('hidden'),document.body.style.overflow='');
         }
         document.addEventListener('DOMContentLoaded',()=>{const m=document.getElementById('mobileMenuBtn');if(m)m.addEventListener('click',toggleMobileMenu);});
+
+        function openRejectModal(id, name) {
+            document.getElementById('rejectForm').action = '/admin/review/' + id + '/reject';
+            document.getElementById('rejectEmployeeName').textContent = name;
+            document.getElementById('rejectModal').classList.remove('hidden');
+            document.getElementById('rejectModal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRejectModal(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('rejectModal').classList.add('hidden');
+            document.getElementById('rejectModal').classList.remove('flex');
+            document.body.style.overflow = '';
+        }
     </script>
 </body>
 </html>

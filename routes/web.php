@@ -6,6 +6,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 
 // Login page
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -45,7 +46,32 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
 });
 
-// Admin dashboard (protected)
-Route::get('/admin/dashboard', function () {
-    return view('dashboard.admin');
-})->middleware('auth')->middleware('can:admin')->name('admin.dashboard');
+// Admin routes (protected)
+Route::middleware(['auth', 'can:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+
+    // Manajemen Karyawan
+    Route::get('/employees', [AdminController::class, 'employees'])->name('employees');
+    Route::get('/employees/create', [AdminController::class, 'createEmployee'])->name('employees.create');
+    Route::post('/employees', [AdminController::class, 'storeEmployee'])->name('employees.store');
+    Route::get('/employees/{id}/edit', [AdminController::class, 'editEmployee'])->name('employees.edit');
+    Route::put('/employees/{id}', [AdminController::class, 'updateEmployee'])->name('employees.update');
+    Route::delete('/employees/{id}', [AdminController::class, 'deleteEmployee'])->name('employees.delete');
+
+    // Review Presensi
+    Route::get('/review', [AdminController::class, 'reviewPresensi'])->name('review');
+    Route::post('/review/{id}/approve', [AdminController::class, 'approveAttendance'])->name('review.approve');
+    Route::post('/review/{id}/reject', [AdminController::class, 'rejectAttendance'])->name('review.reject');
+
+    // Rekap Absensi
+    Route::get('/rekap', [AdminController::class, 'rekapAbsensi'])->name('rekap');
+    Route::get('/rekap/export', [AdminController::class, 'exportRekap'])->name('rekap.export');
+
+    // Manajemen Perizinan
+    Route::get('/leaves', [AdminController::class, 'leaveRequests'])->name('leaves');
+    Route::post('/leaves/{id}/approve', [AdminController::class, 'approveLeave'])->name('leaves.approve');
+    Route::post('/leaves/{id}/reject', [AdminController::class, 'rejectLeave'])->name('leaves.reject');
+
+    // Laporan Detail
+    Route::get('/laporan', [AdminController::class, 'laporanDetail'])->name('laporan');
+});

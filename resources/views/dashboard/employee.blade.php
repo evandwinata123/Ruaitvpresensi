@@ -156,44 +156,44 @@
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all">
+                    <a href="{{ route('leave.index') }}" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all block group">
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-sm font-medium text-slate-500">Izin (Bulan Ini)</p>
-                                <p class="text-3xl font-bold text-slate-800 mt-1">{{ $totalIzin }} <span class="text-lg text-slate-400">/ {{ $sisaIzin + $totalIzin }}</span></p>
+                                <p class="text-3xl font-bold text-slate-800 mt-1 group-hover:text-amber-600">{{ $totalIzin }} <span class="text-lg text-slate-400">/ {{ $sisaIzin + $totalIzin }}</span></p>
                                 <p class="text-xs text-amber-500 mt-1"><i class="fas fa-clock mr-1"></i>Sisa: {{ $sisaIzin }} izin</p>
                             </div>
-                            <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center">
+                            <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center group-hover:bg-amber-200 transition-all">
                                 <i class="fas fa-clock text-amber-500 text-2xl"></i>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all">
+                    <a href="{{ route('leave.index') }}" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all block group">
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-sm font-medium text-slate-500">Sakit (Bulan Ini)</p>
-                                <p class="text-3xl font-bold text-slate-800 mt-1">{{ $totalSakit }}</p>
+                                <p class="text-3xl font-bold text-slate-800 mt-1 group-hover:text-red-600">{{ $totalSakit }}</p>
                                 <p class="text-xs text-red-500 mt-1"><i class="fas fa-hospital mr-1"></i>Wajib surat dokter</p>
                             </div>
-                            <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center">
+                            <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center group-hover:bg-red-200 transition-all">
                                 <i class="fas fa-hospital text-red-500 text-2xl"></i>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all">
+                    <a href="{{ route('leave.index') }}" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all block group">
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-sm font-medium text-slate-500">Sisa Cuti</p>
-                                <p class="text-3xl font-bold text-slate-800 mt-1">{{ $sisaCuti }}</p>
+                                <p class="text-3xl font-bold text-slate-800 mt-1 group-hover:text-blue-600">{{ $sisaCuti }}</p>
                                 <p class="text-xs text-blue-500 mt-1"><i class="fas fa-calendar mr-1"></i>Dari 12 hari/tahun</p>
                             </div>
-                            <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center">
+                            <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center group-hover:bg-blue-200 transition-all">
                                 <i class="fas fa-umbrella-beach text-blue-500 text-2xl"></i>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <!-- Attendance & Clock Section -->

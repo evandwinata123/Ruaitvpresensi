@@ -15,7 +15,7 @@
 </head>
 <body class="bg-slate-50">
     <div class="flex min-h-screen">
-        @include('components.sidebar')
+@include('components.sidebaradmin')
         <div class="flex-1 lg:ml-72">
             <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
                 <div class="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
@@ -47,6 +47,29 @@
                     <i class="fas fa-check-circle text-green-500 text-lg"></i><p class="text-sm font-medium text-green-700">{{ session('success') }}</p>
                 </div>
                 @endif
+
+                <!-- Search Bar -->
+                <div class="mb-6">
+                    <form method="GET" action="{{ route('admin.employees') }}">
+                        <div class="flex items-center space-x-3">
+                            <div class="relative flex-1 max-w-md">
+                                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                                    <i class="fas fa-search text-slate-400"></i>
+                                </div>
+                                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari berdasarkan NIP atau Nama..." class="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-400 focus:border-transparent outline-none transition-all">
+                            </div>
+                            <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl text-sm font-medium hover:from-indigo-600 hover:to-purple-700 transition-all shadow-lg shadow-indigo-500/20">
+                                <i class="fas fa-search mr-1"></i>Cari
+                            </button>
+                            @if(request('search'))
+                            <a href="{{ route('admin.employees') }}" class="px-5 py-2.5 border border-slate-200 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all">
+                                <i class="fas fa-undo mr-1"></i>Reset
+                            </a>
+                            @endif
+                        </div>
+                    </form>
+                </div>
+
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                     <div class="overflow-x-auto">
                         <table class="w-full">

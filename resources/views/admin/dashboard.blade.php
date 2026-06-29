@@ -16,7 +16,7 @@
 </head>
 <body class="bg-slate-50">
     <div class="flex min-h-screen">
-        @include('components.sidebar')
+@include('components.sidebaradmin')
 
         <div class="flex-1 lg:ml-72">
             <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
@@ -64,57 +64,57 @@
 
                 <!-- Stats Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all">
+                    <a href="{{ route('admin.employees') }}" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all block group">
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-sm font-medium text-slate-500">Total Karyawan</p>
-                                <p class="text-3xl font-bold text-slate-800 mt-1">{{ $totalKaryawan }}</p>
+                                <p class="text-3xl font-bold text-slate-800 mt-1 group-hover:text-indigo-600">{{ $totalKaryawan }}</p>
                                 <p class="text-xs text-indigo-500 mt-1"><i class="fas fa-users mr-1"></i>Terdaftar</p>
                             </div>
-                            <div class="w-14 h-14 bg-indigo-100 rounded-2xl flex items-center justify-center">
+                            <div class="w-14 h-14 bg-indigo-100 rounded-2xl flex items-center justify-center group-hover:bg-indigo-200 transition-all">
                                 <i class="fas fa-users text-indigo-500 text-2xl"></i>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all">
+                    <a href="{{ route('admin.review') }}" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all block group">
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-sm font-medium text-slate-500">Presensi Hari Ini</p>
-                                <p class="text-3xl font-bold text-slate-800 mt-1">{{ $totalPresensiHariIni }}</p>
+                                <p class="text-3xl font-bold text-slate-800 mt-1 group-hover:text-green-600">{{ $totalPresensiHariIni }}</p>
                                 <p class="text-xs text-green-500 mt-1"><i class="fas fa-check-circle mr-1"></i>Sudah presensi</p>
                             </div>
-                            <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center">
+                            <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center group-hover:bg-green-200 transition-all">
                                 <i class="fas fa-fingerprint text-green-500 text-2xl"></i>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all">
+                    <a href="{{ route('admin.leaves', ['status' => 'pending']) }}" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all block group">
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-sm font-medium text-slate-500">Izin Hari Ini</p>
-                                <p class="text-3xl font-bold text-slate-800 mt-1">{{ $totalIzinHariIni }}</p>
+                                <p class="text-3xl font-bold text-slate-800 mt-1 group-hover:text-amber-600">{{ $totalIzinHariIni }}</p>
                                 <p class="text-xs text-amber-500 mt-1"><i class="fas fa-clock mr-1"></i>Izin</p>
                             </div>
-                            <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center">
+                            <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center group-hover:bg-amber-200 transition-all">
                                 <i class="fas fa-clock text-amber-500 text-2xl"></i>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all">
+                    <a href="{{ route('admin.leaves', ['type' => 'sakit', 'status' => 'pending']) }}" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 card-hover transition-all block group">
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-sm font-medium text-slate-500">Sakit Hari Ini</p>
-                                <p class="text-3xl font-bold text-slate-800 mt-1">{{ $totalSakitHariIni }}</p>
+                                <p class="text-3xl font-bold text-slate-800 mt-1 group-hover:text-red-600">{{ $totalSakitHariIni }}</p>
                                 <p class="text-xs text-red-500 mt-1"><i class="fas fa-hospital mr-1"></i>Sakit</p>
                             </div>
-                            <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center">
+                            <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center group-hover:bg-red-200 transition-all">
                                 <i class="fas fa-hospital text-red-500 text-2xl"></i>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <!-- Feature Cards -->

@@ -14,7 +14,7 @@
 </head>
 <body class="bg-slate-50">
     <div class="flex min-h-screen">
-        @include('components.sidebar')
+@include('components.sidebaradmin')
         <div class="flex-1 lg:ml-72">
             <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
                 <div class="flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16">
