@@ -26,10 +26,7 @@
             <i class="fas fa-clipboard-check w-5 text-center"></i>
             <span>Riwayat Presensi</span>
         </a>
-        <a href="#" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300">
-            <i class="fas fa-calendar-alt w-5 text-center"></i>
-            <span>Kalender</span>
-        </a>
+        
         <a href="{{ route('leave.index') }}" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium {{ request()->routeIs('leave.*') ? 'active' : 'text-slate-300' }}"
             @if(request()->routeIs('leave.*'))
                 style="background: rgba(255, 255, 255, 0.15); border-right: 3px solid #667eea;"
@@ -38,16 +35,7 @@
             <i class="fas fa-file-alt w-5 text-center {{ request()->routeIs('leave.*') ? 'text-indigo-300' : '' }}"></i>
             <span>Pengajuan Izin/Cuti</span>
         </a>
-        <a href="#" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300">
-            <i class="fas fa-chart-bar w-5 text-center"></i>
-            <span>Laporan</span>
-        </a>
-        <a href="#" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300">
-            <i class="fas fa-clock w-5 text-center"></i>
-            <span>Lembur</span>
-        </a>
-
-        <div class="pt-3">
+        
             <a href="{{ route('profile.index') }}" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium {{ request()->routeIs('profile.*') ? 'active' : 'text-slate-300' }}"
                 @if(request()->routeIs('profile.*'))
                     style="background: rgba(255, 255, 255, 0.15); border-right: 3px solid #667eea;"
@@ -56,7 +44,7 @@
                 <i class="fas fa-user-circle w-5 text-center {{ request()->routeIs('profile.*') ? 'text-indigo-300' : '' }}"></i>
                 <span>Profil Saya</span>
             </a>
-        </div>
+        
     </nav>
 
     <!-- Logout -->
@@ -99,29 +87,19 @@
             <i class="fas fa-clipboard-check w-5 text-center"></i>
             <span>Riwayat Presensi</span>
         </a>
-        <a href="#" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300">
-            <i class="fas fa-calendar-alt w-5 text-center"></i>
-            <span>Kalender</span>
-        </a>
+        
         <a href="{{ route('leave.index') }}" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium {{ request()->routeIs('leave.*') ? 'active' : 'text-slate-300' }}">
             <i class="fas fa-file-alt w-5 text-center {{ request()->routeIs('leave.*') ? 'text-indigo-300' : '' }}"></i>
             <span>Pengajuan Izin/Cuti</span>
         </a>
-        <a href="#" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300">
-            <i class="fas fa-chart-bar w-5 text-center"></i>
-            <span>Laporan</span>
-        </a>
-        <a href="#" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300">
-            <i class="fas fa-clock w-5 text-center"></i>
-            <span>Lembur</span>
-        </a>
 
-        <div class="pt-3">
+
+        
             <a href="{{ route('profile.index') }}" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium {{ request()->routeIs('profile.*') ? 'active' : 'text-slate-300' }}">
                 <i class="fas fa-user-circle w-5 text-center {{ request()->routeIs('profile.*') ? 'text-indigo-300' : '' }}"></i>
                 <span>Profil Saya</span>
             </a>
-        </div>
+        
     </nav>
     <div class="px-4 py-4 border-t border-white/10">
         <form action="{{ route('auth.logout') }}" method="POST">

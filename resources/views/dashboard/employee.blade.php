@@ -244,7 +244,7 @@
                                     <h3 class="text-lg font-bold text-slate-800">Aktivitas Hari Ini</h3>
                                     <p class="text-sm text-slate-500">Ringkasan aktivitas presensi terkini</p>
                                 </div>
-                                <a href="#" class="text-sm text-indigo-500 hover:text-indigo-700 font-medium">Lihat Semua <i class="fas fa-arrow-right ml-1"></i></a>
+                
                             </div>
 
                             <div class="space-y-0">
@@ -291,16 +291,7 @@
                                 <h3 class="text-lg font-bold text-slate-800">Riwayat Presensi</h3>
                                 <p class="text-sm text-slate-500">Data presensi 7 hari terakhir</p>
                             </div>
-                            <div class="flex items-center space-x-2">
-                                <select class="text-sm border border-slate-200 rounded-lg px-3 py-2 text-slate-600 bg-white focus:ring-2 focus:ring-indigo-400 focus:border-transparent outline-none">
-                                    <option>Bulan Ini</option>
-                                    <option>Bulan Lalu</option>
-                                    <option>7 Hari</option>
-                                </select>
-                                <button class="p-2 border border-slate-200 rounded-lg hover:bg-slate-50 text-slate-500">
-                                    <i class="fas fa-download"></i>
-                                </button>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="overflow-x-auto">
