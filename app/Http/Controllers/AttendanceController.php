@@ -175,4 +175,74 @@ class AttendanceController extends Controller
             'data' => $attendances,
         ]);
     }
+
+    /**
+     * Display monthly attendance history page for employee.
+     */
+    public function historyPage($bulan = null, $tahun = null)
+    {
+        $user = Auth::user();
+
+        // Default to current month/year
+        if (!$bulan || $bulan < 1 || $bulan > 12) {
+            $bulan = now()->month;
+        }
+        if (!$tahun || $tahun < 2000) {
+            $tahun = now()->year;
+        }
+
+        $bulanNama = [
+            1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
+            5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
+            9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember'
+        ][$bulan];
+
+        // Get attendances for the selected month
+        $attendances = Attendance::where('user_id', $user->id)
+            ->whereYear('tanggal', $tahun)
+            ->whereMonth('tanggal', $bulan)
+            ->orderBy('tanggal', 'asc')
+            ->get();
+
+        // Calculate summary
+        $totalHari = $attendances->count();
+        $hadir = $attendances->whereIn('status', ['hadir', 'terlambat'])->count();
+        $izinSakit = $attendances->whereIn('status', ['izin', 'sakit', 'cuti'])->count();
+        $alpha = $attendances->where('status', 'alpha')->count();
+        $persenHadir = $totalHari > 0 ? round(($hadir / $totalHari) * 100) : 0;
+
+        $summary = [
+            'total_hari' => $totalHari,
+            'hadir' => $hadir,
+            'izin_sakit' => $izinSakit,
+            'alpha' => $alpha,
+            'persen_hadir' => $persenHadir,
+        ];
+
+        // Monthly stats for the grid (all months in selected year)
+        $monthlyStats = [];
+        for ($m = 1; $m <= 12; $m++) {
+            $monthAttendances = Attendance::where('user_id', $user->id)
+                ->whereYear('tanggal', $tahun)
+                ->whereMonth('tanggal', $m)
+                ->get();
+
+            $total = $monthAttendances->count();
+            $hadirCount = $monthAttendances->whereIn('status', ['hadir', 'terlambat'])->count();
+            $monthlyStats[$m] = [
+                'hadir' => $hadirCount,
+                'total' => $total,
+                'persen' => $total > 0 ? round(($hadirCount / $total) * 100) : 0,
+            ];
+        }
+
+        return view('attendance.history', compact(
+            'attendances',
+            'bulan',
+            'tahun',
+            'bulanNama',
+            'summary',
+            'monthlyStats'
+        ));
+    }
 }

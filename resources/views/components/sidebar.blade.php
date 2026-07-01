@@ -22,8 +22,12 @@
             <i class="fas fa-home w-5 text-center {{ request()->routeIs('dashboard') ? 'text-indigo-300' : '' }}"></i>
             <span>Beranda</span>
         </a>
-        <a href="#" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300">
-            <i class="fas fa-clipboard-check w-5 text-center"></i>
+        <a href="{{ route('attendance.history.page', ['bulan' => now()->month, 'tahun' => now()->year]) }}" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium {{ request()->routeIs('attendance.history.*') ? 'active' : 'text-slate-300' }}"
+            @if(request()->routeIs('attendance.history.*'))
+                style="background: rgba(255, 255, 255, 0.15); border-right: 3px solid #667eea;"
+            @endif
+        >
+            <i class="fas fa-clipboard-check w-5 text-center {{ request()->routeIs('attendance.history.*') ? 'text-indigo-300' : '' }}"></i>
             <span>Riwayat Presensi</span>
         </a>
         
@@ -83,8 +87,8 @@
             <i class="fas fa-home w-5 text-center {{ request()->routeIs('dashboard') ? 'text-indigo-300' : '' }}"></i>
             <span>Beranda</span>
         </a>
-        <a href="#" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-slate-300">
-            <i class="fas fa-clipboard-check w-5 text-center"></i>
+        <a href="{{ route('attendance.history.page', ['bulan' => now()->month, 'tahun' => now()->year]) }}" class="nav-link flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium {{ request()->routeIs('attendance.history.*') ? 'active' : 'text-slate-300' }}">
+            <i class="fas fa-clipboard-check w-5 text-center {{ request()->routeIs('attendance.history.*') ? 'text-indigo-300' : '' }}"></i>
             <span>Riwayat Presensi</span>
         </a>
         
