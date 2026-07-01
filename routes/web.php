@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/attendance/status', [AttendanceController::class, 'status'])->name('attendance.status');
     Route::get('/attendance/history', [AttendanceController::class, 'history'])->name('attendance.history');
     Route::get('/attendance/history/{bulan}/{tahun}', [AttendanceController::class, 'historyPage'])->name('attendance.history.page');
+    Route::get('/attendance/export-excel/{bulan}/{tahun}', [AttendanceController::class, 'exportExcel'])->name('attendance.export.excel');
 });
 
 // Leave routes (protected)

@@ -130,10 +130,10 @@
                                 </select>
                                 <i class="fas fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
                             </div>
-                            <button onclick="window.print()" class="bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all shadow-sm flex items-center space-x-2">
-                                <i class="fas fa-print text-indigo-500"></i>
-                                <span class="hidden sm:inline">Cetak</span>
-                            </button>
+                            <a href="{{ route('attendance.export.excel', ['bulan' => $bulan, 'tahun' => $tahun]) }}" class="bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all shadow-sm flex items-center space-x-2">
+                                <i class="fas fa-file-excel text-green-600"></i>
+                                <span class="hidden sm:inline">Cetak Excel</span>
+                            </a>
                         </div>
                     </div>
                 </div>
